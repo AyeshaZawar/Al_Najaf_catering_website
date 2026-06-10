@@ -287,30 +287,13 @@ function ContactForm() {
               transition={{ delay: 1.1, duration: 0.9 }}
               className="mt-8 flex justify-center md:justify-start"
             >
-              <a
-                href="#contact"
-                className="
-    group
-    inline-flex
-    items-center
-    gap-3
-    rounded-full
-    bg-[#483226]
-    hover:bg-gold
-    px-8
-    py-4
-    text-[11px]
-    tracking-[0.28em]
-    text-[#ECE4D8]
-    font-semibold
-    transition-all
-    duration-500
-    mx-auto
-  "
+              <button
+                type="submit"
+                className="group inline-flex items-center gap-3 rounded-full bg-[#483226] hover:bg-gold px-8 py-4 text-[11px] tracking-[0.28em] text-[#ECE4D8] font-semibold transition-all duration-500 mx-auto"
               >
                 Request A Quote
                 <ArrowRight className="w-4 h-4 transition-transform duration-500 group-hover:translate-x-1.5 group-hover:rotate-45" />
-              </a>
+              </button>
             </motion.div>
           </form>
         </motion.div>
