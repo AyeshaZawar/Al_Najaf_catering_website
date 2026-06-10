@@ -4,7 +4,7 @@ import { supabase } from "@/lib/supabase";
 import ProtectedAdminRoute from "@/components/admin/ProtectedAdminRoute";
 import DashboardTable from "@/components/admin/DashboardTable";
 
-export const Route = createFileRoute("/admin-dashboard")({
+export const Route = createFileRoute("/portal-84kx9-admin-panel")({
   component: Index,
 });
 
@@ -14,6 +14,10 @@ type Submission = {
   email: string;
   message: string;
   created_at: string;
+  event_type?: string;
+  company_name?: string;
+  phone?: string;
+  guests?: number;
 };
 
 function Index() {

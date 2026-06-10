@@ -11,12 +11,12 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as WeddingMenuRouteImport } from './routes/wedding-menu'
 import { Route as ReligiousMenuRouteImport } from './routes/religious-menu'
+import { Route as Portal84kx9AdminPanelRouteImport } from './routes/portal-84kx9-admin-panel'
 import { Route as PartiesMenuRouteImport } from './routes/parties-menu'
 import { Route as AdminSignupRouteImport } from './routes/admin-signup'
 import { Route as AdminResetPasswordRouteImport } from './routes/admin-reset-password'
 import { Route as AdminLoginRouteImport } from './routes/admin-login'
 import { Route as AdminForgotPasswordRouteImport } from './routes/admin-forgot-password'
-import { Route as AdminDashboardRouteImport } from './routes/admin-dashboard'
 import { Route as ContactUsRouteImport } from './routes/ContactUs'
 import { Route as AboutUsRouteImport } from './routes/AboutUs'
 import { Route as IndexRouteImport } from './routes/index'
@@ -29,6 +29,11 @@ const WeddingMenuRoute = WeddingMenuRouteImport.update({
 const ReligiousMenuRoute = ReligiousMenuRouteImport.update({
   id: '/religious-menu',
   path: '/religious-menu',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Portal84kx9AdminPanelRoute = Portal84kx9AdminPanelRouteImport.update({
+  id: '/portal-84kx9-admin-panel',
+  path: '/portal-84kx9-admin-panel',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PartiesMenuRoute = PartiesMenuRouteImport.update({
@@ -56,11 +61,6 @@ const AdminForgotPasswordRoute = AdminForgotPasswordRouteImport.update({
   path: '/admin-forgot-password',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AdminDashboardRoute = AdminDashboardRouteImport.update({
-  id: '/admin-dashboard',
-  path: '/admin-dashboard',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const ContactUsRoute = ContactUsRouteImport.update({
   id: '/ContactUs',
   path: '/ContactUs',
@@ -81,12 +81,12 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/AboutUs': typeof AboutUsRoute
   '/ContactUs': typeof ContactUsRoute
-  '/admin-dashboard': typeof AdminDashboardRoute
   '/admin-forgot-password': typeof AdminForgotPasswordRoute
   '/admin-login': typeof AdminLoginRoute
   '/admin-reset-password': typeof AdminResetPasswordRoute
   '/admin-signup': typeof AdminSignupRoute
   '/parties-menu': typeof PartiesMenuRoute
+  '/portal-84kx9-admin-panel': typeof Portal84kx9AdminPanelRoute
   '/religious-menu': typeof ReligiousMenuRoute
   '/wedding-menu': typeof WeddingMenuRoute
 }
@@ -94,12 +94,12 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/AboutUs': typeof AboutUsRoute
   '/ContactUs': typeof ContactUsRoute
-  '/admin-dashboard': typeof AdminDashboardRoute
   '/admin-forgot-password': typeof AdminForgotPasswordRoute
   '/admin-login': typeof AdminLoginRoute
   '/admin-reset-password': typeof AdminResetPasswordRoute
   '/admin-signup': typeof AdminSignupRoute
   '/parties-menu': typeof PartiesMenuRoute
+  '/portal-84kx9-admin-panel': typeof Portal84kx9AdminPanelRoute
   '/religious-menu': typeof ReligiousMenuRoute
   '/wedding-menu': typeof WeddingMenuRoute
 }
@@ -108,12 +108,12 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/AboutUs': typeof AboutUsRoute
   '/ContactUs': typeof ContactUsRoute
-  '/admin-dashboard': typeof AdminDashboardRoute
   '/admin-forgot-password': typeof AdminForgotPasswordRoute
   '/admin-login': typeof AdminLoginRoute
   '/admin-reset-password': typeof AdminResetPasswordRoute
   '/admin-signup': typeof AdminSignupRoute
   '/parties-menu': typeof PartiesMenuRoute
+  '/portal-84kx9-admin-panel': typeof Portal84kx9AdminPanelRoute
   '/religious-menu': typeof ReligiousMenuRoute
   '/wedding-menu': typeof WeddingMenuRoute
 }
@@ -123,12 +123,12 @@ export interface FileRouteTypes {
     | '/'
     | '/AboutUs'
     | '/ContactUs'
-    | '/admin-dashboard'
     | '/admin-forgot-password'
     | '/admin-login'
     | '/admin-reset-password'
     | '/admin-signup'
     | '/parties-menu'
+    | '/portal-84kx9-admin-panel'
     | '/religious-menu'
     | '/wedding-menu'
   fileRoutesByTo: FileRoutesByTo
@@ -136,12 +136,12 @@ export interface FileRouteTypes {
     | '/'
     | '/AboutUs'
     | '/ContactUs'
-    | '/admin-dashboard'
     | '/admin-forgot-password'
     | '/admin-login'
     | '/admin-reset-password'
     | '/admin-signup'
     | '/parties-menu'
+    | '/portal-84kx9-admin-panel'
     | '/religious-menu'
     | '/wedding-menu'
   id:
@@ -149,12 +149,12 @@ export interface FileRouteTypes {
     | '/'
     | '/AboutUs'
     | '/ContactUs'
-    | '/admin-dashboard'
     | '/admin-forgot-password'
     | '/admin-login'
     | '/admin-reset-password'
     | '/admin-signup'
     | '/parties-menu'
+    | '/portal-84kx9-admin-panel'
     | '/religious-menu'
     | '/wedding-menu'
   fileRoutesById: FileRoutesById
@@ -163,12 +163,12 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutUsRoute: typeof AboutUsRoute
   ContactUsRoute: typeof ContactUsRoute
-  AdminDashboardRoute: typeof AdminDashboardRoute
   AdminForgotPasswordRoute: typeof AdminForgotPasswordRoute
   AdminLoginRoute: typeof AdminLoginRoute
   AdminResetPasswordRoute: typeof AdminResetPasswordRoute
   AdminSignupRoute: typeof AdminSignupRoute
   PartiesMenuRoute: typeof PartiesMenuRoute
+  Portal84kx9AdminPanelRoute: typeof Portal84kx9AdminPanelRoute
   ReligiousMenuRoute: typeof ReligiousMenuRoute
   WeddingMenuRoute: typeof WeddingMenuRoute
 }
@@ -187,6 +187,13 @@ declare module '@tanstack/react-router' {
       path: '/religious-menu'
       fullPath: '/religious-menu'
       preLoaderRoute: typeof ReligiousMenuRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/portal-84kx9-admin-panel': {
+      id: '/portal-84kx9-admin-panel'
+      path: '/portal-84kx9-admin-panel'
+      fullPath: '/portal-84kx9-admin-panel'
+      preLoaderRoute: typeof Portal84kx9AdminPanelRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/parties-menu': {
@@ -224,13 +231,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminForgotPasswordRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/admin-dashboard': {
-      id: '/admin-dashboard'
-      path: '/admin-dashboard'
-      fullPath: '/admin-dashboard'
-      preLoaderRoute: typeof AdminDashboardRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/ContactUs': {
       id: '/ContactUs'
       path: '/ContactUs'
@@ -259,12 +259,12 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutUsRoute: AboutUsRoute,
   ContactUsRoute: ContactUsRoute,
-  AdminDashboardRoute: AdminDashboardRoute,
   AdminForgotPasswordRoute: AdminForgotPasswordRoute,
   AdminLoginRoute: AdminLoginRoute,
   AdminResetPasswordRoute: AdminResetPasswordRoute,
   AdminSignupRoute: AdminSignupRoute,
   PartiesMenuRoute: PartiesMenuRoute,
+  Portal84kx9AdminPanelRoute: Portal84kx9AdminPanelRoute,
   ReligiousMenuRoute: ReligiousMenuRoute,
   WeddingMenuRoute: WeddingMenuRoute,
 }

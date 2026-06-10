@@ -1,20 +1,20 @@
-import { createFileRoute } from '@tanstack/react-router';
-import { useState } from 'react';
-import { supabase } from '@/lib/supabase';
+import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
+import { supabase } from "@/lib/supabase";
 
-export const Route = createFileRoute('/admin-login')({
+export const Route = createFileRoute("/admin-login")({
   component: Index,
 });
 
 function Index() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError('');
+    setError("");
     setLoading(true);
 
     try {
@@ -24,7 +24,7 @@ function Index() {
       });
 
       if (authError) {
-        setError(authError.message || 'Login failed');
+        setError(authError.message || "Login failed");
         setLoading(false);
         return;
       }
@@ -32,28 +32,34 @@ function Index() {
       const session = data?.session;
       const userId = session?.user?.id;
       if (!userId) {
-        setError('No session returned');
+        setError("No session returned");
         setLoading(false);
         return;
       }
-
-      const { data: profile, error: profileErr } = await supabase
-        .from('profiles')
-        .select('role')
-        .eq('id', userId)
+      const { data: setting } = await supabase
+        .from("app_settings")
+        .select("admin_email")
+        .eq("id", 1)
         .single();
 
-      if (profileErr || !profile || profile.role !== 'admin') {
+      if (!setting?.admin_email) {
+        await supabase
+          .from("app_settings")
+          .update({
+            admin_email: session.user.email,
+          })
+          .eq("id", 1);
+      } else if (setting.admin_email !== session.user.email) {
         await supabase.auth.signOut();
-        setError('You are not authorized to access the admin dashboard.');
+        setError("Only the original admin account can login.");
         setLoading(false);
         return;
       }
 
       // redirect to dashboard
-      window.location.href = '/admin-dashboard';
+      window.location.href = '/portal-84kx9-admin-panel';
     } catch (err: any) {
-      setError(err.message || 'Login error');
+      setError(err.message || "Login error");
     } finally {
       setLoading(false);
     }
@@ -97,12 +103,16 @@ function Index() {
               className="px-4 py-2 bg-[#483226] text-white rounded-full disabled:opacity-60"
               disabled={loading}
             >
-              {loading ? 'Signing in...' : 'Sign In'}
+              {loading ? "Signing in..." : "Sign In"}
             </button>
           </div>
           <div className="flex items-center justify-between text-sm mt-2">
-            <a href="/admin-forgot-password" className="text-[#483226]">Forgot Password?</a>
-            <a href="/admin-signup" className="text-[#483226]">Create Admin</a>
+            <a href="/admin-forgot-password" className="text-[#483226]">
+              Forgot Password?
+            </a>
+            <a href="/admin-signup" className="text-[#483226]">
+              Create Admin
+            </a>
           </div>
         </form>
       </div>

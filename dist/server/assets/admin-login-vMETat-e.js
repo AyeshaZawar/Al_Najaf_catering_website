@@ -32,16 +32,19 @@ function Index() {
         return;
       }
       const {
-        data: profile,
-        error: profileErr
-      } = await supabase.from("profiles").select("role").eq("id", userId).single();
-      if (profileErr || !profile || profile.role !== "admin") {
+        data: setting
+      } = await supabase.from("app_settings").select("admin_email").eq("id", 1).single();
+      if (!setting?.admin_email) {
+        await supabase.from("app_settings").update({
+          admin_email: session.user.email
+        }).eq("id", 1);
+      } else if (setting.admin_email !== session.user.email) {
         await supabase.auth.signOut();
-        setError("You are not authorized to access the admin dashboard.");
+        setError("Only the original admin account can login.");
         setLoading(false);
         return;
       }
-      window.location.href = "/admin-dashboard";
+      window.location.href = "/portal-84kx9-admin-panel";
     } catch (err) {
       setError(err.message || "Login error");
     } finally {

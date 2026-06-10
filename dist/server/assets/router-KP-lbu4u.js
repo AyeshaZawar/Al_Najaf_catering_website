@@ -125,8 +125,12 @@ const Route$9 = createFileRoute("/religious-menu")({
   }),
   component: lazyRouteComponent($$splitComponentImporter$9, "component")
 });
-const $$splitComponentImporter$8 = () => import("./parties-menu-hUoRg46E.js");
-const Route$8 = createFileRoute("/parties-menu")({
+const $$splitComponentImporter$8 = () => import("./portal-84kx9-admin-panel-B1IpAL_r.js");
+const Route$8 = createFileRoute("/portal-84kx9-admin-panel")({
+  component: lazyRouteComponent($$splitComponentImporter$8, "component")
+});
+const $$splitComponentImporter$7 = () => import("./parties-menu-hUoRg46E.js");
+const Route$7 = createFileRoute("/parties-menu")({
   head: () => ({
     meta: [{
       title: "Parties Menu— Al Najaf Catering"
@@ -135,29 +139,25 @@ const Route$8 = createFileRoute("/parties-menu")({
       content: "Discover Al Najaf's luxury Parties Menu— starters, mains, desserts and beverages crafted for unforgettable celebrations."
     }]
   }),
-  component: lazyRouteComponent($$splitComponentImporter$8, "component")
-});
-const $$splitComponentImporter$7 = () => import("./admin-signup-DgorNkQo.js");
-const Route$7 = createFileRoute("/admin-signup")({
   component: lazyRouteComponent($$splitComponentImporter$7, "component")
 });
-const $$splitComponentImporter$6 = () => import("./admin-reset-password-Dy387WRI.js");
-const Route$6 = createFileRoute("/admin-reset-password")({
+const $$splitComponentImporter$6 = () => import("./admin-signup-D8aHKmZy.js");
+const Route$6 = createFileRoute("/admin-signup")({
   component: lazyRouteComponent($$splitComponentImporter$6, "component")
 });
-const $$splitComponentImporter$5 = () => import("./admin-login-DbshrpYh.js");
-const Route$5 = createFileRoute("/admin-login")({
+const $$splitComponentImporter$5 = () => import("./admin-reset-password-Dy387WRI.js");
+const Route$5 = createFileRoute("/admin-reset-password")({
   component: lazyRouteComponent($$splitComponentImporter$5, "component")
 });
-const $$splitComponentImporter$4 = () => import("./admin-forgot-password-G7X7lC23.js");
-const Route$4 = createFileRoute("/admin-forgot-password")({
+const $$splitComponentImporter$4 = () => import("./admin-login-vMETat-e.js");
+const Route$4 = createFileRoute("/admin-login")({
   component: lazyRouteComponent($$splitComponentImporter$4, "component")
 });
-const $$splitComponentImporter$3 = () => import("./admin-dashboard-B1IpAL_r.js");
-const Route$3 = createFileRoute("/admin-dashboard")({
+const $$splitComponentImporter$3 = () => import("./admin-forgot-password-G7X7lC23.js");
+const Route$3 = createFileRoute("/admin-forgot-password")({
   component: lazyRouteComponent($$splitComponentImporter$3, "component")
 });
-const $$splitComponentImporter$2 = () => import("./ContactUs-BuqNGfCq.js");
+const $$splitComponentImporter$2 = () => import("./ContactUs-Db_Yd09l.js");
 const Route$2 = createFileRoute("/ContactUs")({
   component: lazyRouteComponent($$splitComponentImporter$2, "component"),
   head: () => ({
@@ -201,34 +201,34 @@ const ReligiousMenuRoute = Route$9.update({
   path: "/religious-menu",
   getParentRoute: () => Route$b
 });
-const PartiesMenuRoute = Route$8.update({
+const Portal84kx9AdminPanelRoute = Route$8.update({
+  id: "/portal-84kx9-admin-panel",
+  path: "/portal-84kx9-admin-panel",
+  getParentRoute: () => Route$b
+});
+const PartiesMenuRoute = Route$7.update({
   id: "/parties-menu",
   path: "/parties-menu",
   getParentRoute: () => Route$b
 });
-const AdminSignupRoute = Route$7.update({
+const AdminSignupRoute = Route$6.update({
   id: "/admin-signup",
   path: "/admin-signup",
   getParentRoute: () => Route$b
 });
-const AdminResetPasswordRoute = Route$6.update({
+const AdminResetPasswordRoute = Route$5.update({
   id: "/admin-reset-password",
   path: "/admin-reset-password",
   getParentRoute: () => Route$b
 });
-const AdminLoginRoute = Route$5.update({
+const AdminLoginRoute = Route$4.update({
   id: "/admin-login",
   path: "/admin-login",
   getParentRoute: () => Route$b
 });
-const AdminForgotPasswordRoute = Route$4.update({
+const AdminForgotPasswordRoute = Route$3.update({
   id: "/admin-forgot-password",
   path: "/admin-forgot-password",
-  getParentRoute: () => Route$b
-});
-const AdminDashboardRoute = Route$3.update({
-  id: "/admin-dashboard",
-  path: "/admin-dashboard",
   getParentRoute: () => Route$b
 });
 const ContactUsRoute = Route$2.update({
@@ -250,12 +250,12 @@ const rootRouteChildren = {
   IndexRoute,
   AboutUsRoute,
   ContactUsRoute,
-  AdminDashboardRoute,
   AdminForgotPasswordRoute,
   AdminLoginRoute,
   AdminResetPasswordRoute,
   AdminSignupRoute,
   PartiesMenuRoute,
+  Portal84kx9AdminPanelRoute,
   ReligiousMenuRoute,
   WeddingMenuRoute
 };

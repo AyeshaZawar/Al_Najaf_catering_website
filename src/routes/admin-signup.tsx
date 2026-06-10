@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
 
 export const Route = createFileRoute("/admin-signup")({
@@ -7,6 +7,22 @@ export const Route = createFileRoute("/admin-signup")({
 });
 
 function Index() {
+  useEffect(() => {
+    const checkAdmin = async () => {
+      const { data } = await supabase
+        .from("app_settings")
+        .select("admin_email")
+        .eq("id", 1)
+        .single();
+
+      if (data?.admin_email) {
+        window.location.href = "/admin-login";
+      }
+    };
+
+    checkAdmin();
+  }, []);
+
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -39,6 +55,12 @@ function Index() {
       const userId = data?.user?.id;
 
       if (userId) {
+        await supabase
+          .from("app_settings")
+          .update({
+            admin_email: email,
+          })
+          .eq("id", 1);
         // create profile with role=admin
         const { error: profileErr } = await supabase
           .from("profiles")

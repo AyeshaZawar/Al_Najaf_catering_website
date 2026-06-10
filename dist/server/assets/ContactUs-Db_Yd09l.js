@@ -206,7 +206,7 @@ function ContactForm() {
         }, transition: {
           delay: 1.1,
           duration: 0.9
-        }, className: "mt-8 flex justify-center md:justify-start", children: /* @__PURE__ */ jsxs("a", { href: "#contact", className: "\n    group\n    inline-flex\n    items-center\n    gap-3\n    rounded-full\n    bg-[#483226]\n    hover:bg-gold\n    px-8\n    py-4\n    text-[11px]\n    tracking-[0.28em]\n    text-[#ECE4D8]\n    font-semibold\n    transition-all\n    duration-500\n    mx-auto\n  ", children: [
+        }, className: "mt-8 flex justify-center md:justify-start", children: /* @__PURE__ */ jsxs("button", { type: "submit", className: "group inline-flex items-center gap-3 rounded-full bg-[#483226] hover:bg-gold px-8 py-4 text-[11px] tracking-[0.28em] text-[#ECE4D8] font-semibold transition-all duration-500 mx-auto", children: [
           "Request A Quote",
           /* @__PURE__ */ jsx(ArrowRight, { className: "w-4 h-4 transition-transform duration-500 group-hover:translate-x-1.5 group-hover:rotate-45" })
         ] }) })
